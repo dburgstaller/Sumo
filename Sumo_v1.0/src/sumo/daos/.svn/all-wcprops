@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/SUMO/!svn/ver/311/4%20-%20Source/Sumo_v1.0/src/sumo/daos
+END
+MitarbeiterDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/SUMO/!svn/ver/317/4%20-%20Source/Sumo_v1.0/src/sumo/daos/MitarbeiterDao.java
+END
+DaoBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/daos/DaoBase.java
+END
+MitarbeiterstundenDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/SUMO/!svn/ver/317/4%20-%20Source/Sumo_v1.0/src/sumo/daos/MitarbeiterstundenDao.java
+END

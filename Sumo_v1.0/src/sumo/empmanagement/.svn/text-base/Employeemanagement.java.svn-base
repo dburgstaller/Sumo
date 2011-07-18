@@ -1,0 +1,234 @@
+package sumo.empmanagement;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
+import sumo.Constants.Constants;
+import sumo.daos.MitarbeiterDao;
+import sumo.daos.MitarbeiterstundenDao;
+import sumo.login.Logout;
+import sumo.model.Mitarbeiterstunde;
+
+/*
+* Ersteller: Christian Bauer, Daniel Burgstaller, Thomas Kranzer
+* Letzter Bearbeiter: Daniel Burgstaller
+* Klassenname: Employeemanagement
+* Superklasse: JFram
+* Interfaces: ActionListener, KeyListener 
+* Funktionen:
+*			createEmployee
+*			editEmployee
+*			deleteEmployee
+*			print
+*			actionPerformed
+*			KeyPressed
+*			KeyReleased
+*			Key		
+*/
+
+public class Employeemanagement extends JFrame implements ActionListener,KeyListener{
+	JPanel mainPanel = new JPanel();
+	JPanel northside = new JPanel();
+	JTable centerside = new JTable();
+	JPanel southside = new JPanel();
+	JPanel search_panel = new JPanel();
+	JPanel image_panel = new JPanel();
+	GridBagLayout gbl = new GridBagLayout();
+	GridBagConstraints gbc;
+	
+	ImageIcon logo = new ImageIcon("images/mitarbeiterverwaltung_kl.jpg");
+	JTextField search = new JTextField("Mitarbeitersuche");
+	JComboBox filter = new JComboBox();
+
+	JButton create = new JButton("<html>Mitarbeiter <U>e</U>rstellen</font></blink></html>");
+
+	JButton show = new JButton("Mitarbeiter anzeigen");
+	
+	JButton print = new JButton ("Drucken");
+	JButton close=new JButton("Schlie§en");
+	
+	public Employeemanagement(){
+		super("Mitarbeiter");
+		close.setActionCommand("Close");
+		
+		
+		northside.setBackground(Constants.cl_blue);
+		centerside.setBackground(Constants.cl_blue);
+		
+		search_panel.setBackground(Constants.cl_blue);
+	
+		setLayout(new BorderLayout());
+		
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(dim);
+		search_panel.setLayout(new GridLayout(1,2,30,30));
+		search_panel.add(search);
+	
+		search_panel.add(filter);
+		
+		image_panel.setLayout(new BorderLayout());
+		image_panel.add(new JLabel(logo));
+		northside.setLayout(new FlowLayout());
+		northside.add(image_panel, BorderLayout.WEST);
+		northside.setLocation(0, 0);
+		northside.add(search_panel, BorderLayout.EAST);
+		//northside.add(new JLabel());
+		//northside.add(search_panel);
+		
+		southside.setLayout(new FlowLayout());	
+		create.addActionListener(this);
+		show.addActionListener(this);
+		
+	
+		print.addActionListener(this);
+		
+		close.addActionListener(this);
+		
+		southside.add(create);
+		southside.add(show);
+		
+		southside.add(print);
+		southside.add(close);
+		
+		centerside=createCenter();
+		mainPanel.setLayout(new BorderLayout());
+		mainPanel.add(northside, BorderLayout.NORTH);
+		mainPanel.add(new JScrollPane(centerside), BorderLayout.CENTER);
+		mainPanel.add(southside, BorderLayout.SOUTH);
+		mainPanel.setBackground(Constants.cl_blue);
+		this.add(mainPanel);
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
+		
+	}
+	private JTable createCenter() {
+		JTable ret;
+		MitarbeiterstundenDao dao=new MitarbeiterstundenDao();
+		MitarbeiterDao mbdao=new MitarbeiterDao();
+		List<Mitarbeiterstunde> stunden=dao.getMitarbeiterStunden();
+		String[] columns={"ID","Name","Angekommen","Gegangen","Bemerkung"};
+		Object[][] data=new Object[stunden.size()][5];
+		int row=0;
+		for(Mitarbeiterstunde m: stunden){
+			data[row][0]=m.getId();
+			
+			data[row][1]=m.getMitarbeiter().getName();
+			data[row][2]=m.getAngekommen();
+			data[row][3]=m.getGegangen();
+			data[row][4]=m.getBemerkung();
+			row++;
+		}
+		ret=new JTable(data,columns);
+		ret.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		return ret;
+	}
+	/*
+* Ersteller: Daniel Burgstaller
+* Funktionname: actionPerformed
+* Paramterliste:
+*					ActionEvent e 
+* Funktion:
+*            Actionlistener
+*/
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String cmd=e.getActionCommand();
+		if (cmd.equals("Close")){
+			this.dispose();
+		}//#if
+		if (cmd.equals("<html>Mitarbeiter <U>e</U>rstellen</font></blink></html>")){
+			System.out.println("asdf");
+			EmployeemanagementAdd m = new EmployeemanagementAdd();
+			m.setVisible(true);
+			//mainPanel.add(m);
+		}//#if
+		if (cmd.equals("Mitarbeiter anzeigen")) {
+			EmployeemanagementShowEdit ese=new EmployeemanagementShowEdit();
+		}//#if
+	}//#actionPerformed
+	
+	/*
+* Ersteller: Thomas Kranzer
+* Funktionname: makegbc
+* Paramterliste:
+*					int x, int y, int width, int height
+* Funktion:
+*            set GridBagConstraints zu den parametern
+*/
+
+	private GridBagConstraints makegbc (int x, int y, int width, int height){
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = width;
+		gbc.gridheight = height;
+		gbc.insets = new Insets(1, 1, 1, 1);
+		return gbc;
+	}//#makegbc
+	
+	
+	/*
+* Ersteller: Daniel Burgstaller
+* Funktionname: keyPressed
+* Paramterliste:
+*					KeyEvent e
+* Funktion:
+*            KeyListener
+*/
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		/// TODO Auto-generated method stub
+		
+		System.out.println("In KeyPressed");
+		if (e.getKeyCode() == KeyEvent.VK_E){
+			System.out.println("hallo");
+			EmployeemanagementAdd add=new EmployeemanagementAdd();
+			add.setVisible(true);
+		}else{
+			
+		}//#if
+		
+	}//#keypressed
+	
+	
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}//#Employeemanagement

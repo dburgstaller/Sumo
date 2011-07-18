@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sumo">
+	<!--
+	<property name="jboss.home" value="C:/Java/jboss"/>
+	-->
+	<property name="build.home" value="build"/>
+	<property name="dist.home" value="dist"/>
+	<property name="war.file" value="dist/${ant.project.name}.war"/>
+	
+	<property environment="env"/>
+	
+	<path id="compile.classpath">	
+		<fileset dir="${env.PACKAGES}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset file="${env.JBOSS_HOME}/common/lib/jboss-servlet-api_3.0_spec.jar" />
+	
+	</path>
+    <target name="clean">
+        <delete dir="build"/>
+    	<delete dir="dist"/>
+    	<delete dir="bin"/>
+    </target>
+
+    <target name="compile">
+    	<property name="classes" value="${build.home}/WEB-INF/classes"/>
+        <mkdir dir="${classes}"/>
+    	<echo message="Classpath: ${env.PACKAGES}/*.jar"/>
+        <javac srcdir="src" destdir="${classes}" debug="true">
+        	<classpath refid="compile.classpath" />
+        </javac>
+    	<copy todir="${classes}" >
+    		<fileset dir="src">
+    			<include name="**/*.hbm.xml"/>
+    		</fileset>
+    	</copy>
+    </target>
+	
+
+    <target name="jar" depends="compile">
+    	<mkdir dir="${dist.home}"/>
+    	<mkdir dir="${build.home}/WEB-INF/classes"/>
+    	<copy todir="${build.home}/WEB-INF/classes">
+    		<fileset file="src/hibernate.cfg.xml"/>
+    		</copy>
+    	<copy todir="${build.home}">
+    		<fileset dir="DocumentRoot">
+    		  <include name="**/*"/>
+    		</fileset>
+    	
+    	</copy>
+    	
+        <jar destfile="${war.file}" basedir="${build.home}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+	<target name="deploy" depends="jar">
+	    <echo message="${env.JBOSS_HOME}"/>
+		<copy todir="${env.JBOSS_HOME}/server/default/deploy" file="${war.file}"/>
+	</target>
+	<target name="schemaexport">
+  	  <taskdef name="schemaexport"
+        classname="org.hibernate.tool.hbm2ddl.SchemaExportTask"
+        classpathref="compile.classpath"/>
+    
+    <schemaexport
+        properties="hibernate.properties"
+        quiet="no"
+        text="no"
+        drop="no"
+        delimiter=";"
+        output="schema-export.sql">
+        <fileset dir="src">
+            <include name="**/*.hbm.xml"/>
+        </fileset>
+    </schemaexport>
+</target>
+	<target name="oisinan" depends="clean,deploy" />
+</project>
+
+

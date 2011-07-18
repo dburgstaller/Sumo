@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+    <class name="sumo.model.Verleih" table="VERLEIH">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="datumVon" type="java.sql.Date">
+            <column name="DATUMVON" />
+        </property>
+       
+        <many-to-one name="kunde" class="sumo.model.Kunde" fetch="join">
+            <column name="KUNDE" />
+        </many-to-one>
+        <property name="bemerkung" type="java.lang.String">
+            <column name="BEMERKUNG" />
+        </property>
+          <list name="medium" inverse="false" table="VERLEIHMEDIUM" lazy="true">
+            <key>
+                <column name="vl_id" />
+            </key>
+            <list-index column="vl_pos"></list-index>
+            <composite-element class="VerleihMedium">
+            	<many-to-one class="Medium" column="med_id" foreign-key="fk_medium_verleih" name="medium"></many-to-one>
+           		<property column="vm_datumbis" generated="never" name="datumBis" type="java.sql.Date"></property>
+           	 </composite-element>
+        </list>
+    </class>
+</hibernate-mapping>

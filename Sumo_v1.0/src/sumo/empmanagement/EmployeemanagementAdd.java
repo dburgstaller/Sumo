@@ -1,0 +1,416 @@
+package sumo.empmanagement;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileView;
+import javax.swing.plaf.FileChooserUI;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.toedter.calendar.JDateChooser;
+
+
+
+import sumo.Constants.Constants;
+import sumo.daos.MitarbeiterDao;
+import sumo.model.Mitarbeiter;
+
+/*
+ * Ersteller: Daniel Burgstaller, Thomas Kranzer
+ * Letzter Bearbeiter: Daniel Burgstaller
+ * Klassenname: EmployeemanagementAdd
+ * Superklasse: JFrame
+ * Interfaces: ActionListener
+ * Funktionen:
+ *			createSouthPanel
+ *			addToCenterPanels
+ *			initializeTextFields
+ *			initializeTextFields
+ *			setLabelsToWhiteForeground
+ *			initializeLabels
+ *			actionPerformed
+
+ */
+public class EmployeemanagementAdd extends JFrame implements ActionListener {
+	JLabel lblbild;
+	String bildpfad = "";
+	JPanel centerPanel = new JPanel();
+	JPanel rightPanel = new JPanel();
+	JPanel mainPanel = new JPanel();
+	JPanel southPanel = new JPanel();
+	JPasswordField tfPasswort = new JPasswordField();
+	JTextField tfName, tfAnschrift, tfPlz, tfOrt, tfGehalt, tfKontoNr, tfBlz,
+			tfUsername, tfBemerkung;
+	JLabel lSeit, lName, lAnschrift, lPlz, lOrt, lGehalt, lKontoNr, lBlz,
+			lUsername, lPasswort, lBemerkung, lIsAdmin;
+	JCheckBox cbIsAdmin;
+	JDateChooser dcseit;
+	ImageIcon logo = new ImageIcon("images/leerpic.jpg");
+	JButton speichern, abbrechen;
+
+	JButton durchsuchen;
+	JLabel north_label = new JLabel("Mitarbeiter anlegen");
+	JPanel right_center ;
+	public EmployeemanagementAdd() {
+		super("Erstellen");
+
+		setLayout(new BorderLayout());
+
+		// setUndecorated(true);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(dim);
+		mainPanel.setLayout(new GridLayout(1, 2));
+		centerPanel.setLayout(new GridLayout(14, 2, 20, 20));
+		centerPanel.setBackground(Constants.cl_blue);
+
+		initializeLabels();
+
+		initializeTextFields();
+
+		addToCenterPanels();
+
+		mainPanel.add(centerPanel);
+		rightPanel.setLayout(new GridLayout(2, 1, 50, 50));
+		
+		initializeRightCenter();
+		this.add(mainPanel, BorderLayout.CENTER);
+
+		southPanel = createSouthPanel();
+		JPanel northPanel = new JPanel();
+		northPanel.setBackground(Constants.cl_blue);
+
+		north_label.setForeground(Constants.cl_orange);
+		north_label.setHorizontalAlignment(JLabel.CENTER);
+		north_label.setFont(new Font("Serief", Font.BOLD, 15));
+		northPanel.add(north_label);
+		this.add(northPanel, BorderLayout.NORTH);
+		this.add(southPanel, BorderLayout.SOUTH);
+
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}// #Konstruktor
+
+	private void initializeRightCenter() {
+		right_center= new JPanel();
+		lblbild= new JLabel(logo);
+		lblbild.setBackground(Constants.cl_blue);
+		right_center.add(lblbild);
+		right_center.setBackground(Constants.cl_blue);
+		rightPanel.setBackground(Constants.cl_blue);
+		durchsuchen = new JButton("Durchsuchen ...");
+		durchsuchen.addActionListener(this);
+		right_center.add(durchsuchen);
+		rightPanel.add(right_center);
+		rightPanel.add(new JLabel());
+		mainPanel.add(rightPanel);
+	}
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: createSouthPanel
+	 * Paramterliste:
+	 * 
+	 * Funktion: Erstellt die Leiste unten mit den Buttons
+	 */
+	private JPanel createSouthPanel() {
+		JPanel ret = new JPanel();
+		speichern = new JButton("Speichern");
+		speichern.addActionListener(this);
+
+		abbrechen = new JButton("Abbrechen");
+		abbrechen.addActionListener(this);
+
+		ret.add(speichern);
+		ret.add(abbrechen);
+		return ret;
+	}// #createSouthPanel
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: addToCenterPanels
+	 * Paramterliste:
+	 * 
+	 * Funktion: erstellt das CenterPanel mit allen Elementen
+	 */
+	public void addToCenterPanels() {
+		centerPanel.add(lName);
+		centerPanel.add(tfName);
+		centerPanel.add(lAnschrift);
+		centerPanel.add(tfAnschrift);
+		centerPanel.add(lPlz);
+		centerPanel.add(tfPlz);
+		centerPanel.add(lOrt);
+		centerPanel.add(tfOrt);
+		centerPanel.add(lGehalt);
+		centerPanel.add(tfGehalt);
+		centerPanel.add(lKontoNr);
+		centerPanel.add(tfKontoNr);
+		centerPanel.add(lBlz);
+		centerPanel.add(tfBlz);
+		centerPanel.add(lSeit);
+		centerPanel.add(dcseit);
+		centerPanel.add(lUsername);
+		centerPanel.add(tfUsername);
+		centerPanel.add(lPasswort);
+		centerPanel.add(tfPasswort);
+		centerPanel.add(lBemerkung);
+		centerPanel.add(tfBemerkung);
+		centerPanel.add(lIsAdmin);
+		centerPanel.add(cbIsAdmin);
+	}// #addToCenterPanels
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: initializeTextFields
+	 * Paramterliste:
+	 * 
+	 * Funktion: macht neue TextField
+	 */
+	public void initializeTextFields() {
+		tfName = new JTextField();
+		tfAnschrift = new JTextField();
+		tfPlz = new JTextField();
+		tfOrt = new JTextField();
+		tfGehalt = new JTextField();
+		tfKontoNr = new JTextField();
+		tfBlz = new JTextField();
+		tfUsername = new JTextField();
+		tfPasswort = new JPasswordField();
+		tfBemerkung = new JTextField();
+		cbIsAdmin = new JCheckBox();
+		dcseit = new JDateChooser();
+	}// #initializeTextFields
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: setLabelsToWhiteForeground
+	 * Paramterliste:
+	 * 
+	 * Funktion: gibt allen Labels die Foregroundcolor white
+	 */
+	private void setLabelsToWhiteForeground() {
+		lSeit.setForeground(Color.WHITE);
+		lName.setForeground(Color.WHITE);
+		lAnschrift.setForeground(Color.WHITE);
+		lPlz.setForeground(Color.WHITE);
+		lOrt.setForeground(Color.WHITE);
+		lGehalt.setForeground(Color.WHITE);
+		lKontoNr.setForeground(Color.WHITE);
+		lBlz.setForeground(Color.WHITE);
+		lUsername.setForeground(Color.WHITE);
+		lPasswort.setForeground(Color.WHITE);
+		lBemerkung.setForeground(Color.WHITE);
+		lIsAdmin.setForeground(Color.WHITE);
+
+	}// #setLabelsToWhiteForeground
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: initializeLabels
+	 * Paramterliste:
+	 * 
+	 * Funktion: Initilaiziert alle Labels und setzt die Font und das Alignment
+	 */
+	public void initializeLabels() {
+		lSeit = new JLabel("Mitarbeiter seit");
+		lSeit.setFont(new Font("Serief", Font.BOLD, 20));
+		lSeit.setHorizontalAlignment(SwingConstants.RIGHT);
+		lName = new JLabel("Name");
+		lName.setFont(new Font("Serief", Font.BOLD, 20));
+		lName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lAnschrift = new JLabel("Anschrift");
+		lAnschrift.setFont(new Font("Serief", Font.BOLD, 20));
+		lAnschrift.setHorizontalAlignment(SwingConstants.RIGHT);
+		lPlz = new JLabel("PLZ");
+		lPlz.setFont(new Font("Serief", Font.BOLD, 20));
+		lPlz.setHorizontalAlignment(SwingConstants.RIGHT);
+		lOrt = new JLabel("Ort");
+		lOrt.setFont(new Font("Serief", Font.BOLD, 20));
+		lOrt.setHorizontalAlignment(SwingConstants.RIGHT);
+		lGehalt = new JLabel("Gehalt");
+		lGehalt.setFont(new Font("Serief", Font.BOLD, 20));
+		lGehalt.setHorizontalAlignment(SwingConstants.RIGHT);
+		lKontoNr = new JLabel("Kontonummer");
+		lKontoNr.setFont(new Font("Serief", Font.BOLD, 20));
+		lKontoNr.setHorizontalAlignment(SwingConstants.RIGHT);
+		lBlz = new JLabel("BLZ");
+		lBlz.setFont(new Font("Serief", Font.BOLD, 20));
+		lBlz.setHorizontalAlignment(SwingConstants.RIGHT);
+		lUsername = new JLabel("Username");
+		lUsername.setFont(new Font("Serief", Font.BOLD, 20));
+		lUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+		lPasswort = new JLabel("Passwort");
+		lPasswort.setFont(new Font("Serief", Font.BOLD, 20));
+		lPasswort.setHorizontalAlignment(SwingConstants.RIGHT);
+		lBemerkung = new JLabel("Bemerkung");
+		lBemerkung.setFont(new Font("Serief", Font.BOLD, 20));
+		lBemerkung.setHorizontalAlignment(SwingConstants.RIGHT);
+		lIsAdmin = new JLabel("Administrator");
+		lIsAdmin.setFont(new Font("Serief", Font.BOLD, 20));
+		lIsAdmin.setHorizontalAlignment(SwingConstants.RIGHT);
+
+		setLabelsToWhiteForeground();
+	}// #initializeLabels
+
+	/*
+	 * Ersteller: Daniel Burgstaller Funktionname: actionPerformed
+	 * Paramterliste: ActionEvent e Funktion: aus Eventlistener
+	 */
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		String cmd = arg0.getActionCommand();
+		if (cmd.equals("Speichern")) {
+			save();
+		} else {
+			if (cmd.equals("Abbrechen")) {
+				this.dispose();
+
+			} else {
+				if (cmd.equals("Durchsuchen ...")) {
+					JFileChooser chooser = new JFileChooser();
+					// Note: source for ExampleFileFilter can be found in
+					// FileChooserDemo,
+					// under the demo/jfc directory in the Java 2 SDK, Standard
+					// Edition.
+
+					int returnVal = chooser.showOpenDialog(this);
+					if (returnVal == JFileChooser.APPROVE_OPTION) {
+						bildpfad = chooser.getSelectedFile().getAbsolutePath();
+						logo=new ImageIcon(bildpfad);
+						Image img=logo.getImage();
+						
+						int width=0;
+						int height=0;
+						int act_width=img.getWidth(this);
+						int act_height=img.getHeight(this);
+						while(act_height>400 || act_width>300) {
+							act_height/=2;
+							act_width/=2;
+						};
+						Image scaledImage=img.getScaledInstance(act_width, act_height,Image.SCALE_SMOOTH);
+						
+						logo=new ImageIcon(scaledImage);
+						System.out.println(logo.getIconWidth());
+						lblbild.setIcon(logo);
+					}
+				}// #if
+			}// #if
+
+		}// #if
+
+	}// #actionPerformed
+
+	
+    public static void copy(String from, String to) throws IOException{
+        InputStream in = null;
+        OutputStream out = null; 
+        try {
+           InputStream inFile = new FileInputStream(from);
+           in = new BufferedInputStream(inFile);
+           OutputStream outFile = new FileOutputStream(to);
+           out = new BufferedOutputStream(outFile);
+           while (true) {
+              int data = in.read();
+              if (data == -1) {
+                 break;
+              }
+              out.write(data);
+           }
+        } finally {
+           if (in != null) {
+              in.close();
+           }
+           if (out != null) {
+              out.close();
+           }
+        }
+     }
+
+
+	/*
+	 * Ersteller: Daniel Burgstaller 
+	 * Funktionname: save
+	 *  Paramterliste:
+	 * 
+	 * Funktion: speichert den neuen User
+	 */
+	public void save() {
+
+		try {
+			String name = tfName.getText();
+			String anschrift = tfAnschrift.getText();
+			short plz = Short.parseShort(tfPlz.getText());
+			String ort = tfOrt.getText();
+			float gehalt = Float.parseFloat(tfGehalt.getText());
+			Date einstiegsdatum = dcseit.getDate();
+			long kontoNr = Long.parseLong(tfKontoNr.getText());
+			short blz = Short.parseShort(tfBlz.getText());
+			String username = tfUsername.getText();
+			String passwort = tfPasswort.getText();
+			String bemerkung = tfBemerkung.getText();
+			boolean isAdmin = cbIsAdmin.isSelected();
+
+			Mitarbeiter ma = new Mitarbeiter();
+			ma.setName(name);
+			ma.setAnschrift(anschrift);
+			ma.setPlz(plz);
+			ma.setOrt(ort);
+			ma.setGehalt(gehalt);
+			
+			Date d=dcseit.getDate();
+			
+			java.sql.Date dat = new java.sql.Date(d.getTime());
+			ma.setEinstiegsdatum(dat);
+			ma.setKontoNr(kontoNr);
+			ma.setBlz(blz);
+			ma.setUsername(username);
+			ma.setPasswort(passwort);
+			ma.setBemerkung(bemerkung);
+			ma.setIsAdmin(isAdmin);
+			
+			copy(bildpfad,"images/Mitarbeiter/"+username+".jpg");		//Kopiert das Bild aus dem Chooser ins Images verzeichnis lokal
+			bildpfad="images/Mitarbeiter/"+username+".jpg";
+			ma.setBildpfad(bildpfad);
+
+			MitarbeiterDao dao=new MitarbeiterDao();
+			dao.saveOrUpdate(ma);
+			
+			JOptionPane
+					.showMessageDialog(this, "Mitarbeiter wurde gespeichert");
+
+			this.dispose();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this,
+					"Es trat ein Fehler auf! Prüfen Sie die Daten.");
+		}//#try
+	}// #save
+
+}// #EmployeemanagementAdd
+

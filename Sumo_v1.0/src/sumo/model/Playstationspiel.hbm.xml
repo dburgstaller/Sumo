@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+    <joined-subclass name="sumo.model.Playstationspiel" extends="sumo.model.Medium" table="PLAYSTATIONSPIEL" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="maxspieler" type="int">
+            <column name="MAXSPIELER" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

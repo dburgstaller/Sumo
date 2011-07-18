@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+  <joined-subclass name="Ausgangsrechnung" extends="Rechnung" table="AUSGANGSRECHNUNG" lazy="false">
+ <key>
+ <column name="ID">
+ </column></key>
+  <many-to-one class="Kunde" fetch="join" name="kunde">
+   <column name="KUNDE"/>
+  </many-to-one>
+   <list access="field" lazy="true" name="artikellst" table="ARTIKELAUSGANG">
+   <key column="ar_id">
+   
+   </key> 
+   <list-index column="aa_pos" >
+    
+   </list-index>
+   <composite-element class="Artikelausgang">
+  
+    <many-to-one class="Artikel" column="art_id"
+     foreign-key="fk_artikel_artikelausgang" name="artikel"/>
+    <property column="aa_menge" generated="never" lazy="false"
+     name="menge" type="short"/>
+   </composite-element>
+  </list>
+ </joined-subclass>
+</hibernate-mapping>

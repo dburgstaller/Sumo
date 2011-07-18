@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model
+END
+VerleihMedium.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/VerleihMedium.java
+END
+Artikelausgang.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Artikelausgang.java
+END
+Verkauf.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Verkauf.java
+END
+VerkaufMedium.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/VerkaufMedium.java
+END
+Playstationspiel.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Playstationspiel.java
+END
+Kunde.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Kunde.java
+END
+Mitarbeiter.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mitarbeiter.java
+END
+Eingangsrechnung.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Eingangsrechnung.hbm.xml
+END
+Lieferant.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Lieferant.java
+END
+Mitarbeiterstunde.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mitarbeiterstunde.hbm.xml
+END
+Artikel.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Artikel.hbm.xml
+END
+Medium.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Medium.java
+END
+Verleih.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Verleih.hbm.xml
+END
+Artikeleingang.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Artikeleingang.java
+END
+Eingangsrechnung.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Eingangsrechnung.java
+END
+Playstationspiel.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Playstationspiel.hbm.xml
+END
+Kunde.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Kunde.hbm.xml
+END
+Artikel.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Artikel.java
+END
+Rechnung.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Rechnung.hbm.xml
+END
+DVD.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/DVD.hbm.xml
+END
+Ausgangsrechnung.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Ausgangsrechnung.java
+END
+Kassa.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Kassa.java
+END
+Medium.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Medium.hbm.xml
+END
+Rechnung.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Rechnung.java
+END
+DVD.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/DVD.java
+END
+Mahnung.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mahnung.hbm.xml
+END
+Ausgangsrechnung.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Ausgangsrechnung.hbm.xml
+END
+Kassa.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Kassa.hbm.xml
+END
+Verkauf.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Verkauf.hbm.xml
+END
+Mitarbeiterstunde.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mitarbeiterstunde.java
+END
+Mitarbeiter.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mitarbeiter.hbm.xml
+END
+Mahnung.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Mahnung.java
+END
+Lieferant.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Lieferant.hbm.xml
+END
+Verleih.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/SUMO/!svn/ver/315/4%20-%20Source/Sumo_v1.0/src/sumo/model/Verleih.java
+END

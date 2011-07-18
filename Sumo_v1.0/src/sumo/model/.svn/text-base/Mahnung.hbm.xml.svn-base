@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+    <class name="sumo.model.Mahnung" table="MAHNUNG">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="kunde" class="sumo.model.Kunde" fetch="join">
+            <column name="KUNDE" />
+        </many-to-one>
+        <property name="datum" type="java.sql.Date">
+            <column name="DATUM" />
+        </property>
+        <property name="betrag" type="float">
+            <column name="BETRAG" />
+        </property>
+        <property name="stufe" type="short">
+            <column name="STUFE" />
+        </property>
+    </class>
+</hibernate-mapping>

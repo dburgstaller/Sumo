@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/SUMO/!svn/ver/317/4%20-%20Source/Sumo_v1.0
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/SUMO/!svn/ver/313/4%20-%20Source/Sumo_v1.0/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/SUMO/!svn/ver/166/4%20-%20Source/Sumo_v1.0/.project
+END
+Sumo_ERD_DB.mwb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/SUMO/!svn/ver/265/4%20-%20Source/Sumo_v1.0/Sumo_ERD_DB.mwb
+END
+MANIFEST.MF
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/SUMO/!svn/ver/221/4%20-%20Source/Sumo_v1.0/MANIFEST.MF
+END
+hibernate.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/SUMO/!svn/ver/262/4%20-%20Source/Sumo_v1.0/hibernate.properties
+END
+build.num
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/SUMO/!svn/ver/221/4%20-%20Source/Sumo_v1.0/build.num
+END
+schema-export.sql
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/SUMO/!svn/ver/296/4%20-%20Source/Sumo_v1.0/schema-export.sql
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/SUMO/!svn/ver/262/4%20-%20Source/Sumo_v1.0/build.xml
+END

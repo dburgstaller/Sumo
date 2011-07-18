@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+    <class name="sumo.model.Mitarbeiter" table="MITARBEITER">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="anschrift" type="java.lang.String">
+            <column name="ANSCHRIFT" />
+        </property>
+        <property name="plz" type="short">
+            <column name="PLZ" />
+        </property>
+        <property name="ort" type="java.lang.String">
+            <column name="ORT" />
+        </property>
+        <property name="gehalt" type="float">
+            <column name="GEHALT" />
+        </property>
+        <property name="einstiegsdatum" type="java.sql.Date">
+            <column name="EINSTIEGSDATUM" />
+        </property>
+        <property name="kontoNr" type="long">
+            <column name="KONTONR" />
+        </property>
+        <property name="blz" type="short">
+            <column name="BLZ" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="passwort" type="java.lang.String">
+            <column name="PASSWORT" />
+        </property>
+        <property name="bemerkung" type="java.lang.String">
+            <column name="BEMERKUNG" />
+        </property>
+        <property name="isAdmin" type="boolean">
+            <column name="ISADMIN" />
+        </property>
+        <property name="bildpfad" type="java.lang.String">
+            <column name="BILDPFAD" />
+        </property>
+    </class>
+</hibernate-mapping>

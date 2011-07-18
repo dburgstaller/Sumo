@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16.06.2011 18:57:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="sumo.model">
+    <class name="sumo.model.Medium" table="MEDIUM">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="titel" type="java.lang.String">
+            <column name="TITEL" />
+        </property>
+        <property name="menge" type="int">
+            <column name="MENGE" />
+        </property>
+        <property name="bildpfad" type="java.lang.String">
+            <column name="BILDPFAD" />
+        </property>
+        <property name="genre" type="java.lang.String">
+            <column name="GENRE" />
+        </property>
+        <property name="ausleihungen" type="int">
+            <column name="AUSLEIHUNGEN" />
+        </property>
+        <property name="preis" type="float">
+            <column name="PREIS" />
+        </property>
+        <property name="erwerbsdatum" type="java.sql.Date">
+            <column name="ERWERBSDATUM" />
+        </property>
+        <property name="typ" type="short">
+            <column name="TYP" />
+        </property>
+    </class>
+</hibernate-mapping>

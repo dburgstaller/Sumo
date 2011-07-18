@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">sumo</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sumo</property>
+		<property name="hibernate.connection.username">sumo</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<mapping resource="sumo/model/Artikel.hbm.xml" />
+
+		<mapping resource="sumo/model/Ausgangsrechnung.hbm.xml" />
+		<mapping resource="sumo/model/DVD.hbm.xml" />
+		
+		<mapping resource="sumo/model/Eingangsrechnung.hbm.xml" />
+		<mapping resource="sumo/model/Kassa.hbm.xml" />
+
+		<mapping resource="sumo/model/Kunde.hbm.xml" />
+		<mapping resource="sumo/model/Lieferant.hbm.xml" />
+		<mapping resource="sumo/model/Mahnung.hbm.xml" />
+		<mapping resource="sumo/model/Medium.hbm.xml" />
+		<mapping resource="sumo/model/Mitarbeiter.hbm.xml" />
+		<mapping resource="sumo/model/Mitarbeiterstunde.hbm.xml" />
+		<mapping resource="sumo/model/Playstationspiel.hbm.xml" />
+		<mapping resource="sumo/model/Rechnung.hbm.xml" />
+		<mapping resource="sumo/model/Verkauf.hbm.xml" />
+		<mapping resource="sumo/model/Verleih.hbm.xml" />
+
+
+	</session-factory>
+</hibernate-configuration>
